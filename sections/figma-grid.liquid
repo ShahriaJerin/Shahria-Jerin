@@ -1,37 +1,29 @@
-<div class="figma-grid">
-  <div class="page-width">
-    <h2>{{ section.settings.heading }}</h2>
+<section class="figma-grid">
+  <h2>Tisso vision in the wild</h2>
 
-    <div class="figma-grid-wrapper">
-      {% for product in collections.frontpage.products limit: 6 %}
-        <div class="figma-card">
-          <img src="{{ product.featured_image | image_url: width: 400 }}">
-          <h3>{{ product.title }}</h3>
-          <p>{{ product.price | money }}</p>
-          <button class="quick-view-btn" data-handle="{{ product.handle }}">
-            Quick View
-          </button>
-        </div>
-      {% endfor %}
+  <div class="figma-grid-wrap">
+
+  {% for product in collections.all.products limit:6 %}
+
+    <div class="figma-item">
+
+      <img src="{{ product.featured_image | image_url: width:600 }}">
+
+      <button class="hotspot"
+        data-handle="{{ product.handle }}">
+        +
+      </button>
+
     </div>
+
+  {% endfor %}
+
   </div>
-</div>
+</section>
 
 {% schema %}
 {
-  "name": "Figma Grid",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Featured Products"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Figma Grid"
-    }
-  ]
+ "name":"Figma Grid",
+ "presets":[{"name":"Figma Grid"}]
 }
 {% endschema %}
